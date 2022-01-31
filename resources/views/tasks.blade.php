@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
 
         <!-- display validation error -->
 
-        @include('common.errors')
+        @include('errors')
 
         <!-- new task form -->
 
@@ -32,5 +32,46 @@
     </div>
 
     <!-- todo current task -->
+
+    @if (count($tasks) > 0)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Current Tasks
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-striped task-table">
+
+                <!-- table heading -->
+
+                    <thead>
+                        <th>Task</th>
+                        <th>&nbsp;</th>
+                    </thead>
+
+
+                <!-- table body -->
+
+                    <tbody>
+
+                        @foreach ($tasks as $task)
+                            <tr>
+
+                                <!-- task name  -->
+                                <td class="table-text">
+                                    <div>{{ $task->name }}</div>
+                                </td> 
+
+                                <td>
+                                    <!-- todo delete button -->
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 
 @endsection

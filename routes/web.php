@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
+use App\Models\Task;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ Route::get('/', function () {
  Route::post('/task', function(Request $request){
      
     $validator = Validator::make($request->all(),[
-        'name' => 'required|max255',
+        'name' => 'required|max:255',
     ]);
 
     if ($validator->fails()){
