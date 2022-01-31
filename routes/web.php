@@ -64,5 +64,9 @@ Route::get('/', function () {
  */
 
  Route::delete('/task/{task}', function(Task $task){
-     //
+     
+    $task->delete();
+
+    return redirect('/');
+
  });
